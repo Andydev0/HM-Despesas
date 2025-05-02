@@ -69,14 +69,35 @@ Este projeto é um aplicativo de controle financeiro pessoal que permite cadastr
 
 Para facilitar o ambiente de desenvolvimento, o projeto pode ser executado usando Docker:
 
-1. Na pasta raiz do projeto, execute:
+1. Configure os arquivos `.env` necessários:
+
+   **Para o backend (em `backend/.env`):**
+   ```
+   DATABASE_HOST=postgres
+   DATABASE_PORT=5432
+   DATABASE_USER=postgres
+   DATABASE_PASSWORD=postgres
+   DATABASE_NAME=expenses
+   PORT=3000
+   FRONTEND_URL=http://frontend:3001
+   ```
+
+   **Para o frontend (em `frontend/.env`):**
+   ```
+   PORT=3001
+   REACT_APP_API_URL=http://backend:3000
+   ```
+
+   > **Importante:** Observe que os hostnames usados nos arquivos `.env` para Docker são diferentes dos usados para execução local. No Docker, use os nomes dos serviços definidos no docker-compose.yml como hostnames.
+
+2. Na pasta raiz do projeto, execute:
    ```
    docker-compose up -d
    ```
 
-2. Aguarde a inicialização dos containers
+3. Aguarde a inicialização dos containers
 
-3. Acesse a aplicação em http://localhost:3001
+4. Acesse a aplicação em http://localhost:3001
 
 ## Decisões técnicas
 
